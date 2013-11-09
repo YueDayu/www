@@ -1,8 +1,9 @@
 module.exports = function (grunt) {
-    var mu = require('mu2');
+    var mustache = require('./mustache.js');
+    var template = grunt.file.read('./templates/member.html');
     var outdir = '../static/';
     var membersdir = 'members/';
-    grunt.task.registerTask('members', 'create memebers.json', function () {
+    grunt.task.registerTask('members', 'create members.json', function () {
         grunt.log.writeln('-------');
         grunt.log.writeln(outdir);
         grunt.log.writeln(membersdir);
@@ -30,7 +31,7 @@ module.exports = function (grunt) {
             }
         }
         if (row.col.length > 0) output.row.push(row);
-        output = JSON.stringify(output);
-        grunt.file.write(outdir + "members.json", output);
+        output = mustache.render(template, output);
+        grunt.file.write(outdir + "members.html", output);
     });
-}
+};
