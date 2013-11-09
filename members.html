@@ -18,25 +18,19 @@
     <!--<![endif]-->
     <script src="jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="mustache.js"></script>
     <script>
         $(document).ready(function() {
             var tmp = document.getElementById("overall_id");
             var footer = document.getElementById("footer_id");
             tmp.style.minHeight = ($(window).height() - $(footer).height() - 38) + "px";
             //alert($(footer).paddingTop());
-            showMemebers();
+            showMembers();
         });
 
-        function showMemebers() {
-            $.get('/templates/member.html',function(tmpl){
-                console.log(tmpl);
-                $.getJSON('/static/members.json', function(data, textStatus) {
-                        console.log(data);
-                        var html = Mustache.render(tmpl,data);
-                        console.log(html);
-                        $('#members').append(html);
-                });
+        function showMembers() {
+            $.get('/static/members.html',function(html){
+                console.log(html);
+                $('#members').append(html);
             });
         }
     </script>
