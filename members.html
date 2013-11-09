@@ -28,8 +28,7 @@
         });
 
         function showMembers() {
-            $.get('/static/members.html',function(html){
-                console.log(html);
+            $.get('./static/members.html',function(html){
                 $('#members').append(html);
             });
         }
