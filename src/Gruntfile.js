@@ -34,4 +34,11 @@ module.exports = function (grunt) {
         output = mustache.render(template, output);
         grunt.file.write(outdir + "members.html", output);
     });
+    grunt.task.registerTask('members-image','copy images',function(){
+        var image_list = grunt.file.expand(membersdir + "*.jpg",membersdir+"*.png");
+        var i;
+        for(i=0;i<image_list.length;i++){
+            grunt.file.copy(image_list[i],outdir+image_list[i]);
+        }
+    });
 };
