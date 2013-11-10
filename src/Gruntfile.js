@@ -3,6 +3,7 @@ module.exports = function (grunt) {
     var template = grunt.file.read('./templates/member.html');
     var outdir = '../static/';
     var membersdir = 'members/';
+    grunt.task.registerTask('default',['members']);
     grunt.task.registerTask('members', 'create members.json', function () {
         grunt.log.writeln('-------');
         grunt.log.writeln(outdir);
@@ -20,6 +21,10 @@ module.exports = function (grunt) {
         for (i = 0; i < member_file_list.length; i++) {
             grunt.log.writeln("reading file:" + member_file_list[i]);
             member = grunt.file.readJSON(member_file_list[i]);
+            if(member.avatar.match(/^https?:.*$/i)){}
+            else{
+                member.avatar = './static/members/'+member.avatar;
+            }
             if (row.col.length < 3) {
                 row.col.push(member);
             } else {
@@ -33,11 +38,13 @@ module.exports = function (grunt) {
         if (row.col.length > 0) output.row.push(row);
         output = mustache.render(template, output);
         grunt.file.write(outdir + "members.html", output);
+        grunt.task.run('members-image');
     });
     grunt.task.registerTask('members-image','copy images',function(){
-        var image_list = grunt.file.expand(membersdir + "*.jpg",membersdir+"*.png");
+        var image_list = grunt.file.expand({nocase:true},[membersdir + "*.jpg",membersdir+"*.png"]);
         var i;
         for(i=0;i<image_list.length;i++){
+            grunt.log.writeln('reading image:'+image_list[i]);
             grunt.file.copy(image_list[i],outdir+image_list[i]);
         }
     });
