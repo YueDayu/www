@@ -81,7 +81,53 @@
                 <img src="mulab/labmu_small.png" style="padding-top: 50px">
             </div>
             <div class="span8">
-                <iframe src="https://docs.google.com/forms/d/1PGg8Xf4lkOrPs6yr-vH_eEGtEj7H_4qhSFPJOlPaFoM/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                <form class="form-horizontal" name="user_info" action="" method="post">
+                    <h3>This form will be sent to Lab μ by email</h3>
+                    <div class="control-group">
+                        <label class="control-label" for="name_id">Your Name</label>
+                        <div class="controls">
+                            <input type="text" id="name_id" name="user_name" size="20" placeholder="Your Name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="mail_id">Your Email</label>
+                        <div class="controls">
+                            <input type="text" id="mail_id" name="user_mail" size="20" placeholder="Your Email">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="mobile_id">Your Mobile Number</label>
+                        <div class="controls">
+                            <input type="text" id="mobile_id" name="user_mobile" size="20" placeholder="Your Mobile Number">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="department_id">Your Department &amp; Grade</label>
+                        <div class="controls">
+                            <input type="text" id="department_id" name="user_department" size="20" placeholder="Your Department &amp; Grade">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Your Gender</label>
+                        <div class="controls">
+                            <input type="radio" name="user_gender" value="male" class="" checked><span class="down-4px"> Male</span>
+                            <input type="radio" name="user_gender" value="female" class=""><span class="down-4px"> Female</span>
+                            <input type="radio" name="user_gender" value="other" class=""><span class="down-4px"> Others</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="words_id">Words To Us</label>
+                        <div class="controls">
+                            <textarea id="words_id" name="user_words" rows="5" cols="20" placeholder="Words To Us"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="button" value="send" class="btn btn-primary" onClick="sendUserInfo()">
+                            <input type="reset" value="reset" class="btn" style="position:relative;left:10px;">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
